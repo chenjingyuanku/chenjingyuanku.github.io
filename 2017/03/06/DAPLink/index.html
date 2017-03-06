@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="DAPLink 简介
+​	​	​	​	DAPLink是ARM公司开发的一款单片机调试器，支持
+123MSC - Drag&amp;amp;Drop 编程方式CDC - 用于记录日志，追踪和终端仿真的虚拟串口HID - 兼容 CMSIS-DAP 调试通道
+​	​	​	​	乍一看好像很厉害，但是似乎MSC方式并不支持不同型号的单片机，也就是说想使用拖放编程需要针对不同的单片机要为DAPLink刷入不同的固件。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DAP Link">
+<meta property="og:url" content="http://blog.cjyblog.xyz/2017/03/06/DAPLink/index.html">
+<meta property="og:site_name" content="CJY的小站">
+<meta property="og:description" content="DAPLink 简介
+​	​	​	​	DAPLink是ARM公司开发的一款单片机调试器，支持
+123MSC - Drag&amp;amp;Drop 编程方式CDC - 用于记录日志，追踪和终端仿真的虚拟串口HID - 兼容 CMSIS-DAP 调试通道
+​	​	​	​	乍一看好像很厉害，但是似乎MSC方式并不支持不同型号的单片机，也就是说想使用拖放编程需要针对不同的单片机要为DAPLink刷入不同的固件。">
+<meta property="og:updated_time" content="2017-03-06T13:52:40.608Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DAP Link">
+<meta name="twitter:description" content="DAPLink 简介
+​	​	​	​	DAPLink是ARM公司开发的一款单片机调试器，支持
+123MSC - Drag&amp;amp;Drop 编程方式CDC - 用于记录日志，追踪和终端仿真的虚拟串口HID - 兼容 CMSIS-DAP 调试通道
+​	​	​	​	乍一看好像很厉害，但是似乎MSC方式并不支持不同型号的单片机，也就是说想使用拖放编程需要针对不同的单片机要为DAPLink刷入不同的固件。">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="../../../../images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="../../../../images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="../../../../images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>DAP Link</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="../../../../lib/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../../lib/meslo-LG/styles.css">
+    <link rel="stylesheet" href="../../../../lib/justified-gallery/justifiedGallery.min.css">
+    <link rel="stylesheet" href="../../../../css/style.css">
+    <!-- rss -->
+    
+    
+    <!-- jquery -->
+    <script src="../../../../lib/jquery/jquery.min.js"></script>
+</head>
+
+<body>
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fa fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="../../../../index.html">Home</a></li>
+         
+          <li><a href="../../../../about/">About</a></li>
+         
+          <li><a href="../../../../archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/chenjingyuanku">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="../添加Emoji到hexo/"><i class="fa fa-chevron-left" aria-hidden="true" onmouseover='$("#i-prev").toggle();' onmouseout='$("#i-prev").toggle();'></i></a></li>
+        
+        
+        <li><a class="icon" href="../../../02/20/Blockly-Game/"><i class="fa fa-chevron-right" aria-hidden="true" onmouseover='$("#i-next").toggle();' onmouseout='$("#i-next").toggle();'></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up" aria-hidden="true" onmouseover='$("#i-top").toggle();' onmouseout='$("#i-top").toggle();'></i></a></li>
+        <li><a class="icon" href="#"><i class="fa fa-share-alt" aria-hidden="true" onmouseover='$("#i-share").toggle();' onmouseout='$("#i-share").toggle();' onclick='$("#share").toggle();return false;'></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://blog.cjyblog.xyz/2017/03/06/DAPLink/"><i class="fa fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://blog.cjyblog.xyz/2017/03/06/DAPLink/&text=DAP Link"><i class="fa fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://blog.cjyblog.xyz/2017/03/06/DAPLink/&title=DAP Link"><i class="fa fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://blog.cjyblog.xyz/2017/03/06/DAPLink/&is_video=false&description=DAP Link"><i class="fa fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=DAP Link&body=Check out this article: http://blog.cjyblog.xyz/2017/03/06/DAPLink/"><i class="fa fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://blog.cjyblog.xyz/2017/03/06/DAPLink/&title=DAP Link"><i class="fa fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://blog.cjyblog.xyz/2017/03/06/DAPLink/&title=DAP Link"><i class="fa fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://blog.cjyblog.xyz/2017/03/06/DAPLink/&title=DAP Link"><i class="fa fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://blog.cjyblog.xyz/2017/03/06/DAPLink/&title=DAP Link"><i class="fa fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://blog.cjyblog.xyz/2017/03/06/DAPLink/&name=DAP Link&description="><i class="fa fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#daplink-简介"><span class="toc-number">1.</span> <span class="toc-text">DAPLink 简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#以下是arm的github项目主页链接"><span class="toc-number">2.</span> <span class="toc-text">以下是ARM的github项目主页链接</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index width mx-auto px2 my4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        DAP Link
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">CJY的小站</span>
+      </span>
+      
+    <div class="postdate">
+        <time datetime="2017-03-05T16:00:00.000Z" itemprop="datePublished">2017-03-06</time>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h2 id="daplink-简介">DAPLink 简介</h2>
+<p>​	​	​	​	DAPLink是ARM公司开发的一款单片机调试器，支持</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MSC - Drag&amp;Drop 编程方式</div><div class="line">CDC - 用于记录日志，追踪和终端仿真的虚拟串口</div><div class="line">HID - 兼容 CMSIS-DAP 调试通道</div></pre></td></tr></table></figure>
+<p>​	​	​	​	乍一看好像很厉害，但是似乎MSC方式并不支持不同型号的单片机，也就是说想使用拖放编程需要针对不同的单片机要为DAPLink刷入不同的固件。这样子就很僵硬了，不过即使没有MSC，单纯的<code>SWD + 串口 + 正版免费开源</code>这三点就足够诱惑人了。<br>
+​	​	​	​	可惜现在独立的DAPLink固件还没开发完成，期待ARM能给力点。</p>
+<h2 id="以下是arm的github项目主页链接">以下是ARM的github项目主页链接</h2>
+<p>​	<a href="https://github.com/mbedmicro/DAPLink" target="_blank" rel="external">MBED板载DAPLink项目主页</a><br>
+​	<a href="https://github.com/ARMmbed/mbed-HDK" target="_blank" rel="external">独立DAPLink项目主页</a></p>
+
+  </div>
+</article>
+
+
+  <section id="comments">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2126740"></script>
+    <!-- UY END -->
+  </section>
+  
+
+    </div>
+    
+      <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="../../../../index.html">Home</a></li>
+         
+          <li><a href="../../../../about/">About</a></li>
+         
+          <li><a href="../../../../archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/chenjingyuanku">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#daplink-简介"><span class="toc-number">1.</span> <span class="toc-text">DAPLink 简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#以下是arm的github项目主页链接"><span class="toc-number">2.</span> <span class="toc-text">以下是ARM的github项目主页链接</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=http://blog.cjyblog.xyz/2017/03/06/DAPLink/"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=http://blog.cjyblog.xyz/2017/03/06/DAPLink/&text=DAP Link"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=http://blog.cjyblog.xyz/2017/03/06/DAPLink/&title=DAP Link"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=http://blog.cjyblog.xyz/2017/03/06/DAPLink/&is_video=false&description=DAP Link"><i class="fa fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=DAP Link&body=Check out this article: http://blog.cjyblog.xyz/2017/03/06/DAPLink/"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=http://blog.cjyblog.xyz/2017/03/06/DAPLink/&title=DAP Link"><i class="fa fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=http://blog.cjyblog.xyz/2017/03/06/DAPLink/&title=DAP Link"><i class="fa fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=http://blog.cjyblog.xyz/2017/03/06/DAPLink/&title=DAP Link"><i class="fa fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=http://blog.cjyblog.xyz/2017/03/06/DAPLink/&title=DAP Link"><i class="fa fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=http://blog.cjyblog.xyz/2017/03/06/DAPLink/&name=DAP Link&description="><i class="fa fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+      <ul>
+        <li id="toc"><a class="icon" href="#" onclick='$("#toc-footer").toggle();return false;'><i class="fa fa-list fa-lg" aria-hidden="true"></i> TOC</a></li>
+        <li id="share"><a class="icon" href="#" onclick='$("#share-footer").toggle();return false;'><i class="fa fa-share-alt fa-lg" aria-hidden="true"></i> Share</a></li>
+        <li id="top" style="display:none"><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a></li>
+        <li id="menu"><a class="icon" href="#" onclick='$("#nav-footer").toggle();return false;'><i class="fa fa-bars fa-lg" aria-hidden="true"></i> Menu</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+    
+    <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2017 MoonDream
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="../../../../index.html">Home</a></li>
+         
+          <li><a href="../../../../about/">About</a></li>
+         
+          <li><a href="../../../../archives/">Writing</a></li>
+         
+          <li><a href="http://github.com/chenjingyuanku">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    <script src="../../../../lib/justified-gallery/jquery.justifiedGallery.min.js"></script>
+<script src="../../../../js/main.js"></script>
+<!-- Google Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
